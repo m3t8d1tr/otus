@@ -81,9 +81,6 @@ struct ListView: View {
         NavigationView {
             NavigationLink(destination: DetailView(cafe: Cafe(name: "Название кафе"))) {
                 return List(cafesList, rowContent: CafeRow.init)
-            }.onTapGesture {
-                // ???
-                //  selectedCafeId = 
             }
             .navigationBarTitle("Список")
             .onReceive(appState.$selectRow) { (output) in
