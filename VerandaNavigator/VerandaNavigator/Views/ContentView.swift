@@ -9,20 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedIndex: Int?
     @EnvironmentObject var appState: AppState
     var body: some View {
         TabView(selection: $appState.selectedTab) {
-            MapView()
+            MapView(selectedIndex: $selectedIndex)
                 .tabItem {
                     Text("Карта")
                     Image(systemName: "map")
             }.tag(ContentView.Tab.map)
-            ListView()
+            ListView(selectedIndex: $selectedIndex)
                 .tabItem {
                     Text("Список")
                     Image(systemName: "list.dash")
             }.tag(ContentView.Tab.list)
-            ModalView()
+            ModalView(selectedIndex: $selectedIndex)
                 .tabItem {
                     Text("Модалка")
                     Image(systemName: "plus.square")
@@ -39,20 +40,23 @@ struct ContentView_Previews: PreviewProvider {
 
 struct MapView: View {
     @EnvironmentObject var appState: AppState
+    @Binding var selectedIndex: Int?
     var body: some View {
         NavigationView {
             VStack {
-            Text("Тут будет карта")
-            Button("Переключить на вторую вкладку") {
-                self.appState.selectedTab = .list
-                self.appState.selectRow = true
-            }
+                Text("Тут будет карта")
+                Button("Переключить на вторую вкладку") {
+                    self.appState.selectedTab = .list
+                    self.appState.selectRow = true
+                    self.selectedIndex = 2 //randomIndex
+                }
             }
         }
     }
 }
 
 struct ListView: View {
+    @Binding var selectedIndex: Int?
     @EnvironmentObject var appState: AppState
     @State var selectedCafeId: UUID? = nil
 
@@ -62,33 +66,19 @@ struct ListView: View {
         Cafe(name: "Original Joe's")
     ]
 
-//    var navigationLink: NavigationLink<EmptyView, DetailView>? {
-//        guard let selectedCafeId = selectedCafeId,
-//            let selectedCafe = cafesList.first(where: {$0.id == selectedCafeId}) else {
-//                return nil
-//        }
-//
-//        return NavigationLink(
-//            destination: DetailView(cafe: selectedCafe),
-//            tag:  selectedCafeId,
-//            selection: $selectedCafeId
-//        ) {
-//            EmptyView()
-//        }
-//    }
-
     var body: some View {
         NavigationView {
-            NavigationLink(destination: DetailView(cafe: Cafe(name: "Название кафе"))) {
-                return List(cafesList, rowContent: CafeRow.init)
-            }
-            .navigationBarTitle("Список")
-            .onReceive(appState.$selectRow) { (output) in
-                if output == true {
-                    // как выбрать элемент списка и перейти?
-                    // аналог didSelectRow
+            List {
+                ForEach(0..<self.cafesList.count) { idx in
+                    NavigationLink(
+                        destination: DetailView(cafe: self.cafesList[idx]),
+                        tag: idx,
+                        selection: self.$selectedIndex) {
+                            Text(self.cafesList[idx].name)
+                    }
                 }
             }
+            .navigationBarTitle("Список")
         }
     }
 }
@@ -108,11 +98,12 @@ struct Cafe: Identifiable {
 struct DetailView: View {
     let cafe: Cafe
     var body: some View {
-        Text("Тут будет описание")
+        Text("Тут будет описание для \(cafe.name)")
     }
 }
 
 struct ModalView: View {
+    @Binding var selectedIndex: Int?
     @State var showingDetail = false
     var body: some View {
         Button(action: {
