@@ -8,12 +8,37 @@
 
 import SwiftUI
 
-class ListViewModel: ObservableObject {
-    @Published private(set) var countries: [Field] = []
-}
+final class ListViewModel: ObservableObject {
 
-struct Field {
-    let name: String
+    var settings = ["Список кафе", "Курс крипто валют"]
+
+    enum APISourceSelect: String, CaseIterable, Identifiable {
+        case mosData = "Кафе"
+        case crypto = "Валюты"
+        var id: String { self.rawValue }
+    }
+
+    @Published var mosData = MosDataCafeListModel()
+    //paging
+    @Published private(set) var isCafePageLoading = false
+    @Published var segmentChoioce: APISourceSelect = .mosData
+
+
+    func fetchMosDataObject() {
+        switch segmentChoioce {
+        case .mosData:
+            self.isCafePageLoading = true
+            NetworkManager.shared.performMosDataNetworkRequest(with: MosDataService.getCafeList(top: 30, skip: mosData.count)) { (result) in
+                self.mosData.append(contentsOf: result)
+                self.isCafePageLoading = false
+            }
+        case .crypto:
+            NetworkManager.shared.performCryptoNetworkRequest(with: CryptocurrencyService.getRates(start: 100, limit: 50)) { (result) in
+                print(result.data?.count)
+            }
+        }
+
+    }
 }
 
 

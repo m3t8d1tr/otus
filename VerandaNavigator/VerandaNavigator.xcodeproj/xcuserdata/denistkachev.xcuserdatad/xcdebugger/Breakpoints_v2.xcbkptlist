@@ -3,4 +3,70 @@
    uuid = "F0012C3C-9411-4736-9B0C-2155B3DC9B94"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92AF20E7-1607-4282-AE7F-FD4860BE2851"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VerandaNavigator/ViewModels/ListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchMosDataObject()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "92AF20E7-1607-4282-AE7F-FD4860BE2851 - 76a299ec0a0ec323"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "VerandaNavigator.ListViewModel.fetchMosDataObject() -&gt; ()"
+                  moduleName = "VerandaNavigator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denistkachev/Documents/Otus/VerandaNavigator/VerandaNavigator/ViewModels/ListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "92AF20E7-1607-4282-AE7F-FD4860BE2851 - aa994ee517e70641"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (VerandaNavigator.CryptoDataModel) -&gt; () in VerandaNavigator.ListViewModel.fetchMosDataObject() -&gt; ()"
+                  moduleName = "VerandaNavigator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denistkachev/Documents/Otus/VerandaNavigator/VerandaNavigator/ViewModels/ListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "59">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1D481F7-394C-4A1E-9EEA-EC09382C7D06"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VerandaNavigator/ViewModels/ListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "rating"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

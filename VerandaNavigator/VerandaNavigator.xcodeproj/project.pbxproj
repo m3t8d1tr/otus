@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E51AE2B25139E9F0055567F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4E51AE2A25139E9F0055567F /* Moya */; };
+		4E51AE2D25139ECA0055567F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE2C25139ECA0055567F /* NetworkManager.swift */; };
+		4E51AE302513A19C0055567F /* MosDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE2F2513A19C0055567F /* MosDataService.swift */; };
+		4E51AE322513A2050055567F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE312513A2050055567F /* Config.swift */; };
+		4E51AE352513A4C60055567F /* MosDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE342513A4C60055567F /* MosDataModel.swift */; };
+		4E51AE382514C6F20055567F /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE372514C6F20055567F /* ActivityIndicatorView.swift */; };
+		4E51AE3B2514DD020055567F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE3A2514DD020055567F /* Array.swift */; };
+		4E51AE3D2514E3AD0055567F /* CryptocurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE3C2514E3AD0055567F /* CryptocurrencyService.swift */; };
+		4E51AE3F2514EBA00055567F /* CryptoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51AE3E2514EBA00055567F /* CryptoDataModel.swift */; };
 		4E9854AB250001AC008AE5A2 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9854AA250001AC008AE5A2 /* ListViewModel.swift */; };
 		4EB93BBD24FFF9C00029F9EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB93BBC24FFF9C00029F9EE /* AppDelegate.swift */; };
 		4EB93BBF24FFF9C00029F9EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB93BBE24FFF9C00029F9EE /* SceneDelegate.swift */; };
@@ -17,6 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E51AE2C25139ECA0055567F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4E51AE2F2513A19C0055567F /* MosDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosDataService.swift; sourceTree = "<group>"; };
+		4E51AE312513A2050055567F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4E51AE342513A4C60055567F /* MosDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosDataModel.swift; sourceTree = "<group>"; };
+		4E51AE372514C6F20055567F /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		4E51AE3A2514DD020055567F /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		4E51AE3C2514E3AD0055567F /* CryptocurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyService.swift; sourceTree = "<group>"; };
+		4E51AE3E2514EBA00055567F /* CryptoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDataModel.swift; sourceTree = "<group>"; };
 		4E9854AA250001AC008AE5A2 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		4EB93BB924FFF9C00029F9EE /* VerandaNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerandaNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB93BBC24FFF9C00029F9EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,12 +50,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E51AE2B25139E9F0055567F /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E51AE2825139CA60055567F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4E51AE2E2513A12C0055567F /* API */,
+				4E51AE2C25139ECA0055567F /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4E51AE2E2513A12C0055567F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4E51AE2F2513A19C0055567F /* MosDataService.swift */,
+				4E51AE3C2514E3AD0055567F /* CryptocurrencyService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4E51AE332513A4A30055567F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E51AE342513A4C60055567F /* MosDataModel.swift */,
+				4E51AE3E2514EBA00055567F /* CryptoDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E51AE362514C6EA0055567F /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				4E51AE372514C6F20055567F /* ActivityIndicatorView.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		4E51AE392514DCFA0055567F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4E51AE3A2514DD020055567F /* Array.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4E9854AC250001E9008AE5A2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +121,7 @@
 			children = (
 				4EB93BBC24FFF9C00029F9EE /* AppDelegate.swift */,
 				4EB93BBE24FFF9C00029F9EE /* SceneDelegate.swift */,
+				4E51AE312513A2050055567F /* Config.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -92,10 +154,14 @@
 		4EB93BBB24FFF9C00029F9EE /* VerandaNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				4E51AE2825139CA60055567F /* Network */,
 				4EB93BCA24FFF9C30029F9EE /* Info.plist */,
 				4E9854AD25000205008AE5A2 /* Views */,
+				4E51AE332513A4A30055567F /* Model */,
 				4E9854AC250001E9008AE5A2 /* ViewModels */,
 				4E9854AF2500021F008AE5A2 /* Resource */,
+				4E51AE392514DCFA0055567F /* Extension */,
+				4E51AE362514C6EA0055567F /* AppKit */,
 				4E9854AE25000211008AE5A2 /* Other */,
 				4EB93BC424FFF9C30029F9EE /* Preview Content */,
 			);
@@ -126,6 +192,9 @@
 			dependencies = (
 			);
 			name = VerandaNavigator;
+			packageProductDependencies = (
+				4E51AE2A25139E9F0055567F /* Moya */,
+			);
 			productName = VerandaNavigator;
 			productReference = 4EB93BB924FFF9C00029F9EE /* VerandaNavigator.app */;
 			productType = "com.apple.product-type.application";
@@ -154,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 4EB93BB024FFF9C00029F9EE;
+			packageReferences = (
+				4E51AE2925139E9F0055567F /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 4EB93BBA24FFF9C00029F9EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,10 +253,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E51AE3F2514EBA00055567F /* CryptoDataModel.swift in Sources */,
 				4EB93BBD24FFF9C00029F9EE /* AppDelegate.swift in Sources */,
+				4E51AE3D2514E3AD0055567F /* CryptocurrencyService.swift in Sources */,
+				4E51AE3B2514DD020055567F /* Array.swift in Sources */,
 				4EB93BBF24FFF9C00029F9EE /* SceneDelegate.swift in Sources */,
+				4E51AE2D25139ECA0055567F /* NetworkManager.swift in Sources */,
+				4E51AE322513A2050055567F /* Config.swift in Sources */,
+				4E51AE302513A19C0055567F /* MosDataService.swift in Sources */,
 				4E9854AB250001AC008AE5A2 /* ListViewModel.swift in Sources */,
+				4E51AE382514C6F20055567F /* ActivityIndicatorView.swift in Sources */,
 				4EB93BC124FFF9C00029F9EE /* ContentView.swift in Sources */,
+				4E51AE352513A4C60055567F /* MosDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E51AE2925139E9F0055567F /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E51AE2A25139E9F0055567F /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E51AE2925139E9F0055567F /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4EB93BB124FFF9C00029F9EE /* Project object */;
 }

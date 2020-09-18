@@ -10,8 +10,9 @@ import UIKit
 import SwiftUI
 
 class AppState: ObservableObject {
-    @Published var selectedTab: ContentView.Tab = .map
+    @Published var selectedTab: ContentView.Tab = .list
     @Published var selectRow: Bool = false
+    @Published var segmentChoioce: ListViewModel.APISourceSelect = .mosData
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
