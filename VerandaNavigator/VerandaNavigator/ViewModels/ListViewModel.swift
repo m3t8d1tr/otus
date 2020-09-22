@@ -12,20 +12,40 @@ final class ListViewModel: ObservableObject {
 
     var settings = ["Список кафе", "Курс крипто валют"]
 
-    enum APISourceSelect: String, CaseIterable, Identifiable {
-        case mosData = "Кафе"
-        case crypto = "Валюты"
-        var id: String { self.rawValue }
+    enum APISourceSelect: Int, CaseIterable, Identifiable {
+        case mosData = 0
+        case crypto = 1
+        case `default` = 2
+        var id: Int { self.rawValue }
     }
 
     @Published var mosData = MosDataCafeListModel()
+    @Published var cryproData = CryptoDataModel()
+
     //paging
     @Published private(set) var isCafePageLoading = false
-    @Published var segmentChoioce: APISourceSelect = .mosData
+    @Published private(set) var isCryptoPageLoading = false
+    @Published var segmentChoioce: APISourceSelect = .default
 
+    func fetchListData(value: Int) {
+        self.segmentChoioce = APISourceSelect.init(rawValue: value) ?? .default
+        fetchMosDataObject()
+    }
 
-    func fetchMosDataObject() {
+    private func fetchMosDataObject() {
         switch segmentChoioce {
+        case .default:
+            self.isCafePageLoading = true
+            NetworkManager.shared.performMosDataNetworkRequest(with: MosDataService.getCafeList(top: 30, skip: mosData.count)) { (result) in
+                self.mosData.append(contentsOf: result)
+                self.isCafePageLoading = false
+            }
+            NetworkManager.shared.performCryptoNetworkRequest(with: CryptocurrencyService.getRates(start: 100, limit: 50)) { (result) in
+                self.cryproData.info = result.info
+                self.cryproData.data = result.data
+                self.isCryptoPageLoading = false
+            }
+
         case .mosData:
             self.isCafePageLoading = true
             NetworkManager.shared.performMosDataNetworkRequest(with: MosDataService.getCafeList(top: 30, skip: mosData.count)) { (result) in
@@ -33,11 +53,13 @@ final class ListViewModel: ObservableObject {
                 self.isCafePageLoading = false
             }
         case .crypto:
+            self.isCryptoPageLoading = true
             NetworkManager.shared.performCryptoNetworkRequest(with: CryptocurrencyService.getRates(start: 100, limit: 50)) { (result) in
-                print(result.data?.count)
+                self.cryproData.info = result.info
+                self.cryproData.data = result.data
+                self.isCryptoPageLoading = false
             }
         }
-
     }
 }
 

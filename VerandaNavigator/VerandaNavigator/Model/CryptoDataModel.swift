@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CryptoDataModel
 struct CryptoDataModel: Codable {
-    var data: [Datum]?
+    var data: [Datum] = []
     var info: Info?
 }
 

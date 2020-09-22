@@ -55,7 +55,7 @@ struct ListView: View {
     @State var selectedCafeId: UUID? = nil
     @ObservedObject var mosDataViewModel = ListViewModel()
     @State var showCellPageLoadingPlaceholder: Bool = true
-    @State private var selectedConfiguration  = 0
+    @State private var selectedConfiguration = 0
 
     var body: some View {
         NavigationView {
@@ -68,9 +68,10 @@ struct ListView: View {
                 }.pickerStyle(SegmentedPickerStyle())
                 Text("suggestedTopping: \(selectedConfiguration)")
                 List {
-                    if mosDataViewModel.isCafePageLoading && mosDataViewModel.mosData.count == 0  {
-                        ListScreen_LoadingPlaceholder()
-                    } else {
+                    if selectedConfiguration == 0 {
+                        if mosDataViewModel.isCafePageLoading && mosDataViewModel.mosData.count == 0  {
+                            ListScreen_LoadingPlaceholder()
+                        }
                         ForEach(0..<self.mosDataViewModel.mosData.count, id: \.self) { idx in
                             NavigationLink(
                                 destination: DetailView(cafe: self.mosDataViewModel.mosData[idx]),
@@ -79,7 +80,7 @@ struct ListView: View {
                                     Text(self.mosDataViewModel.mosData[idx].cells?.stationaryObjectName ?? "Нет названия")
                             }.onAppear() {
                                 if self.mosDataViewModel.mosData.isLast(self.mosDataViewModel.mosData[idx]) {
-                                    self.mosDataViewModel.fetchMosDataObject()
+                                    self.mosDataViewModel.fetchListData(value: self.selectedConfiguration)
                                     if self.mosDataViewModel.mosData.count > 0 {
                                         self.showCellPageLoadingPlaceholder = true
                                     } else {
@@ -88,16 +89,36 @@ struct ListView: View {
                                 }
                             }
                         }
-
                         if showCellPageLoadingPlaceholder {
                             ListScreenFoodCellPlaceholderLoading()
+                        }
+                    } else if selectedConfiguration == 1 {
+                        if mosDataViewModel.isCryptoPageLoading && mosDataViewModel.cryproData.data.count == 0  {
+                            ListScreen_LoadingPlaceholder()
+                        }
+                        ForEach(0..<self.mosDataViewModel.cryproData.data.count, id: \.self) { idx in
+                            NavigationLink(
+                                destination: DetailDatumView(object: self.mosDataViewModel.cryproData.data[idx]),
+                                tag: idx,
+                                selection: self.$selectedIndex) {
+                                    Text(self.mosDataViewModel.mosData[idx].cells?.stationaryObjectName ?? "Нет названия")
+                            }.onAppear() {
+                                if self.mosDataViewModel.mosData.isLast(self.mosDataViewModel.mosData[idx]) {
+                                    self.mosDataViewModel.fetchListData(value: self.selectedConfiguration)
+                                    if self.mosDataViewModel.cryproData.data.count > 0 {
+                                        self.showCellPageLoadingPlaceholder = true
+                                    } else {
+                                        self.showCellPageLoadingPlaceholder = false
+                                    }
+                                }
+                            }
                         }
                     }
                 }.navigationBarTitle("Список")
             }
 
         }.onAppear() {
-            self.mosDataViewModel.fetchMosDataObject()
+            self.mosDataViewModel.fetchListData(value: 2) // default
         }
     }
             func selectNewConfig(_ newValue: Int) {
@@ -125,6 +146,13 @@ struct DetailView: View {
     let cafe: MosDataCafeListElement
     var body: some View {
         Text("Тут будет описание для \(cafe.cells?.stationaryObjectName ?? "")")
+    }
+}
+
+struct DetailDatumView: View {
+    let object: Datum
+    var body: some View {
+        Text("Тут будет описание для \(object.name ?? "")")
     }
 }
 

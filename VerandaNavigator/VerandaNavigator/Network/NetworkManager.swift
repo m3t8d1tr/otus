@@ -20,7 +20,6 @@ final class NetworkManager {
             case .success(let response):
                 do {
                     let result = try JSONDecoder().decode(MosDataCafeListModel.self, from: response.data)
-                    print(result)
                     completion(result)
                 } catch {
                     print(error)
@@ -33,7 +32,17 @@ final class NetworkManager {
 
     public func performCryptoNetworkRequest(with: CryptocurrencyService, completion: @escaping (CryptoDataModel)->()) {
         ctyptoProvider.request(with) { (result) in
-
+            switch result {
+            case .success(let response):
+                do {
+                    let result = try JSONDecoder().decode(CryptoDataModel.self, from: response.data)
+                    completion(result)
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 
